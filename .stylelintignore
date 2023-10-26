@@ -1,0 +1,7 @@
+*.tsx
+*.ts
+*.md
+*.svg
+/node_modules
+/src/assets
+Dockerfile

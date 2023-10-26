@@ -1,0 +1,4 @@
+.root {
+  width: var(--desktop);
+  margin: 0 auto;
+}
