@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  height: 80px;
+
+  background: var(--interface-main-color-black-900, #1a1b22);
+}

@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 
 import { router } from './pages/routes';
 
-import { store } from './store';
+import { store } from './redux-store';
 import { theme } from './theme';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

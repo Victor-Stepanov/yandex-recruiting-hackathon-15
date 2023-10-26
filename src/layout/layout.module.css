@@ -1,4 +1,23 @@
 .root {
-  width: var(--desktop);
-  margin: 0 auto;
+  display: grid;
+  grid-template:
+    'header header'
+    'sidebar content' 1fr
+    /
+    80px 1fr;
+  height: 100vh;
+}
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+  box-sizing: border-box;
+  max-width: 1268px;
+  padding: 48px 0 0 40px;
 }

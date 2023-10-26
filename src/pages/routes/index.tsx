@@ -12,6 +12,10 @@ const routes: RouteObject[] = [
         index: true,
         element: <HomePage />,
       },
+      {
+        path: 'resumelist',
+        element: <span>ResumeListPage</span>,
+      },
     ],
   },
 ];
