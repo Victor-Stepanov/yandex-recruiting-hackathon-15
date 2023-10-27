@@ -2,6 +2,7 @@
 *.ts
 *.md
 *.svg
+*.jpeg
 /node_modules
 /src/assets
 Dockerfile

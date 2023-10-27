@@ -2,6 +2,7 @@ import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '../../layout';
 import { HomePage } from '../Home';
+import { VacancyPage } from '../VacancyPage/page';
 
 const routes: RouteObject[] = [
   {
@@ -14,7 +15,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'resumelist',
-        element: <span>ResumeListPage</span>,
+        element: <VacancyPage />,
       },
     ],
   },
