@@ -7,6 +7,7 @@
     80px 1fr;
   height: 100vh;
 }
+
 .header {
   grid-area: header;
 }
@@ -18,6 +19,6 @@
 .content {
   grid-area: content;
   box-sizing: border-box;
-  max-width: 1268px;
-  padding: 48px 0 0 40px;
+  max-width: 1288px;
+  padding: 56px 0 0 40px;
 }

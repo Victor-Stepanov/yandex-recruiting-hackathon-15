@@ -1,3 +1,9 @@
+import { MainPageVacancy } from '../../components/MainPageVacancy';
+
 export function HomePage() {
-  return <section>HomePage</section>;
+  return (
+    <section>
+      <MainPageVacancy />
+    </section>
+  );
 }
