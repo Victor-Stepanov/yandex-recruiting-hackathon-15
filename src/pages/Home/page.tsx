@@ -1,3 +1,9 @@
+import { VacancyBoardContainer } from '../../components/VacancyBoard';
+
 export function HomePage() {
-  return <section>HomePage</section>;
+  return (
+    <section>
+      <VacancyBoardContainer />
+    </section>
+  );
 }

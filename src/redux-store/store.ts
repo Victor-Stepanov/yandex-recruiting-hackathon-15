@@ -5,8 +5,12 @@ import {
   useSelector,
 } from 'react-redux/es/exports';
 
+import { boardReducer } from './features/board/slice';
+
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    board: boardReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

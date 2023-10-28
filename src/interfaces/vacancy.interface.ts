@@ -22,3 +22,13 @@ export interface VacancyProps {
   updated_at: string;
   author: number;
 }
+
+export interface CandidateProps {
+  id: string;
+  imageSrc: string;
+  name: string;
+  surname: string;
+  grade: string;
+  kanban_position: string;
+  updated_at: Date;
+}
