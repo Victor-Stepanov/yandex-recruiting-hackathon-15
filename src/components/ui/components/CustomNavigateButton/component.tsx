@@ -6,15 +6,15 @@ const theme = createTheme({
     MuiTabs: {
       styleOverrides: {
         root: {
-          'min-height': 32,
-          'margin-bottom': 24,
+          minHeight: 32,
+          marginBottom: 24,
         },
         scroller: {
           height: 32,
         },
         indicator: {
           height: 1,
-          'background-color': 'var(--primary-black-500, #797980)',
+          backgroundColor: 'var(--primary-black-500, #797980)',
         },
         flexContainer: {
           gap: 20,
@@ -26,14 +26,13 @@ const theme = createTheme({
         root: {
           padding: '0',
           width: 144,
-          'font-family': 'YS Display',
-          'font-size': 24,
-          'font-style': 'normal',
-          'font-weight': 400,
-          'line-height': 32,
-          'text-align': 'center',
-          'text-transform': 'none',
-          'min-height': 32,
+          fontfamily: 'YS Display',
+          fontSize: 24,
+          fontStyle: 'normal',
+          fontWeight: 400,
+          textAlign: 'center',
+          textTransform: 'none',
+          minHeight: 32,
           '&.Mui-selected': {
             color: 'black',
           },
@@ -43,7 +42,12 @@ const theme = createTheme({
   },
 });
 
-export function MainNavigateVacancy() {
+interface CustomNavigateButtonProps {
+  labels: string[];
+}
+
+export function CustomNavigateButton(props: CustomNavigateButtonProps) {
+  const { labels } = props;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
@@ -57,9 +61,9 @@ export function MainNavigateVacancy() {
         onChange={handleChange}
         aria-label='basic tabs example'
       >
-        <Tab label='Все' />
-        <Tab label='Активные' />
-        <Tab label='Архивные' />
+        {labels.map((label, index) => (
+          <Tab key={index} label={label} />
+        ))}
       </Tabs>
     </ThemeProvider>
   );

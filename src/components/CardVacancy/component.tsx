@@ -15,7 +15,7 @@ export function CardVacancy(): JSX.Element {
             alt='Логотип'
             height='40'
             width='40'
-            image='https://example.com/image.jpg'
+            image='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png'
             className={styles.img}
           />
           <div>
@@ -39,10 +39,14 @@ export function CardVacancy(): JSX.Element {
 
       <div className={styles.Tegs}>
         <div className={styles.Teg}>
-          <p className={styles.TegText}>Офис</p>
+          <Typography variant='body2' className={styles.TegText}>
+            Офис
+          </Typography>
         </div>
         <div className={styles.Teg}>
-          <p className={styles.TegText}>Полный день</p>
+          <Typography variant='body2' className={styles.TegText}>
+            Полный день
+          </Typography>
         </div>
       </div>
 

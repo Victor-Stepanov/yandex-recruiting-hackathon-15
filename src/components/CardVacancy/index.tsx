@@ -1,2 +1,1 @@
-import { CardVacancy } from './component';
-export { CardVacancy };
+export { CardVacancy } from './component';

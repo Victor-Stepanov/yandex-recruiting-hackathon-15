@@ -10,8 +10,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           background: 'var(--primary-white, #FFF)',
-          'border-radius': '20px',
-          'box-shadow':
+          borderRadius: '20px',
+          boxShadow:
             '0px 4px 6px 0px rgba(176, 190, 197, 0.15), 0px 8px 24px 0px rgba(176, 190, 197, 0.15)',
         },
       },
