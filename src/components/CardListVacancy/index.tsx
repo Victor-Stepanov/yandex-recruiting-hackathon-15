@@ -1,1 +1,1 @@
-export { CardListVacancy } from './component';
+export { CardListVacancyContainer } from './container';
