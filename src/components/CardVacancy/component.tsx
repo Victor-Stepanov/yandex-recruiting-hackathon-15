@@ -2,10 +2,26 @@ import { CardMedia, Typography, IconButton } from '@mui/material';
 
 import styles from './card.module.css';
 
+import { Vacancy } from '../../interfaces/vacancy.interface';
 import { CustomCard } from '../ui/components/CustomCard/component';
 import { PanIcon } from '../ui/icons';
 
-export function CardVacancy(): JSX.Element {
+export function CardVacancy({
+  vacancies,
+}: {
+  vacancies: Vacancy;
+}): JSX.Element {
+  console.log(vacancies);
+
+  const formatDate = (inputDate: string | number | Date) => {
+    const date = new Date(inputDate);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
+  };
+
   return (
     <CustomCard>
       <div className={styles.Header}>
@@ -15,15 +31,16 @@ export function CardVacancy(): JSX.Element {
             alt='Логотип'
             height='40'
             width='40'
-            image='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/BMW_logo_%28gray%29.svg/2048px-BMW_logo_%28gray%29.svg.png'
+            image={`${
+              vacancies.image === null || undefined
+                ? 'https://www.creativefabrica.com/wp-content/uploads/2021/11/27/IT-logo-design-vector-Graphics-20820351-1-580x386.jpg'
+                : vacancies.image
+            }`}
             className={styles.img}
           />
           <div>
             <Typography variant='body2' className={styles.Name}>
-              МТС
-            </Typography>
-            <Typography variant='body2' className={styles.Sill}>
-              Middle
+              {vacancies.company}
             </Typography>
           </div>
         </div>
@@ -33,26 +50,31 @@ export function CardVacancy(): JSX.Element {
       </div>
 
       <div className={styles.info}>
-        <p className={styles.Post}>Frontend-разработчик</p>
-        <p className={styles.PostDate}>Опубликована 15.09.2023</p>
+        <p className={styles.Post}>{vacancies.specialty}</p>
+        <p className={styles.PostDate}>
+          Опубликована {formatDate(vacancies.updated_at)}
+        </p>
       </div>
-
       <div className={styles.Tegs}>
-        <div className={styles.Teg}>
-          <Typography variant='body2' className={styles.TegText}>
-            Офис
-          </Typography>
-        </div>
-        <div className={styles.Teg}>
-          <Typography variant='body2' className={styles.TegText}>
-            Полный день
-          </Typography>
-        </div>
+        {vacancies.work_format.map((format, index) => (
+          <div className={styles.Teg}>
+            <Typography key={index} className={styles.TegText}>
+              {format.name}
+            </Typography>
+          </div>
+        ))}
       </div>
-
       <div className={styles.Status}>
-        <figure className={`${styles.Point} ${styles.Point_active}`} />
-        <p className={styles.Text}>активная</p>
+        <figure
+          className={`${
+            vacancies.is_active
+              ? styles.Point + ' ' + styles.Point_active
+              : styles.Point + ' ' + styles.Point_disable
+          }`}
+        />
+        <p className={styles.Text}>
+          {vacancies.is_active ? 'активная' : 'Неактивная'}
+        </p>
       </div>
     </CustomCard>
   );

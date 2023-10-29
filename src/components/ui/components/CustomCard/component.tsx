@@ -16,6 +16,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          width: 40,
+        },
+      },
+    },
   },
 });
 

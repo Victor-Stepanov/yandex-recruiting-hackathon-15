@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux-store/store';
 import { selecetVacanciesModule } from '../../redux-store/vacancies/selector';
 import { fetchVacancies } from '../../redux-store/vacancies/thunk/fetchVacancies';
 
-export function CardListVacancyContainer() {
+export function CardListVacancyContainer(props: { value: number }) {
   const dispatch = useAppDispatch();
   const vacancies = useAppSelector(selecetVacanciesModule);
   React.useEffect(() => {
@@ -17,5 +17,5 @@ export function CardListVacancyContainer() {
     return;
   }
 
-  return <CardListVacancy />;
+  return <CardListVacancy value={props.value} vacancies={vacancies} />;
 }

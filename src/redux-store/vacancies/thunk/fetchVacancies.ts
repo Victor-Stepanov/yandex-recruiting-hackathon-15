@@ -1,18 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { api } from '../../../helpers/api';
 import { Vacancy } from '../../../interfaces/vacancy.interface';
-
-const token = '';
 
 export const fetchVacancies = createAsyncThunk(
   'vacancyList/fetchVacancies',
   async (_, { rejectWithValue }) => {
-    const response = await fetch('http://130.193.36.223/api/v1/vacancies', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await api.getVacancies();
     if (!response.ok) {
       return rejectWithValue(response.statusText);
     }

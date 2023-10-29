@@ -68,8 +68,11 @@
 .Tegs {
     display: flex;
     flex-grow: 1;
+    flex-wrap: wrap;
     gap: 8px;
-    height: 56px;
+
+    max-width: 356px;
+    min-height: 56px;
 }
 
 .Teg {
@@ -79,6 +82,7 @@
 
     width: fit-content;
     height: 24px;
+    height: fit-content;
 
     border: 1px solid var(--additional-blue-light, #ACCCFF);
     border-radius: 16px;
@@ -92,6 +96,7 @@
     font-weight: 400;
     font-style: normal;
     line-height: 16px;
+    white-space: nowrap;
 }
 
 .Status {
