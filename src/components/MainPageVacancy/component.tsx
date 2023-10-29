@@ -1,6 +1,6 @@
 import styles from './card.module.css';
 
-import { CardListVacancy } from '../CardListVacancy';
+import { CardListVacancy } from '../CardListVacancy/component';
 import { NavigateVacancy } from '../NavigateVacancy/component';
 
 export function MainPageVacancy(): JSX.Element {

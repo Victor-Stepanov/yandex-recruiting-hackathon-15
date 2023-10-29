@@ -5,8 +5,12 @@ import {
   useSelector,
 } from 'react-redux/es/exports';
 
+import { vacanciesReducer } from './vacancies/slice';
+
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    vacancies: vacanciesReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
