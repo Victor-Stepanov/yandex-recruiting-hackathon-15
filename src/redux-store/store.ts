@@ -6,10 +6,12 @@ import {
 } from 'react-redux/es/exports';
 
 import { boardReducer } from './features/board/slice';
+import { vacanciesReducer } from './features/vacancies/slice';
 
 export const store = configureStore({
   reducer: {
     board: boardReducer,
+    vacancies: vacanciesReducer,
   },
 });
 

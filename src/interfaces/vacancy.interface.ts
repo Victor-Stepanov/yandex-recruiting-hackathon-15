@@ -1,11 +1,35 @@
-export interface VacancyProps {
+export interface Location {
+  name: string;
+}
+
+export interface Grade {
+  name: string;
+}
+
+export interface WorkSchedule {
+  name: string;
+}
+
+export interface WorkFormat {
+  name: string;
+}
+
+export interface HardSkill {
+  name: string;
+}
+
+export interface CourseList {
+  name: string;
+}
+
+export interface Vacancy {
   id: number;
-  location: Array<Record<string, string>>;
-  grade: Array<Record<string, string>>;
-  work_schedule: Array<Record<string, string>>;
-  work_format: Array<Record<string, string>>;
-  course_list: Array<Record<string, string>>;
-  hard_skill: Array<Record<string, string>>;
+  location: Location[];
+  grade: Grade[];
+  work_schedule: WorkSchedule[];
+  work_format: WorkFormat[];
+  course_list: CourseList[];
+  hard_skill: HardSkill[];
   work_experience: string;
   education: string;
   office_format: string;

@@ -21,9 +21,9 @@ export function CustomLink({ route, ...props }: CustomLinkProps) {
   return (
     <NavLink {...props} className={styles.root}>
       {route.icon && (
-        <span className={styles.icon}>
+        <div className={styles.icon}>
           <Icon />
-        </span>
+        </div>
       )}
     </NavLink>
   );

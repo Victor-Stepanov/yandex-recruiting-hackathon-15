@@ -1,7 +1,8 @@
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
+import { VacancyBoardContainer } from '../../components/VacancyBoard';
 import { Layout } from '../../layout';
-import { HomePage } from '../Home';
+import { MainPageVacancy } from '../MainPageVacancy';
 import { VacancyPage } from '../VacancyPage/page';
 
 const routes: RouteObject[] = [
@@ -11,11 +12,15 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <MainPageVacancy />,
       },
       {
         path: 'resumelist',
         element: <VacancyPage />,
+      },
+      {
+        path: '/board',
+        element: <VacancyBoardContainer />,
       },
     ],
   },
