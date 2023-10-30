@@ -1,3 +1,5 @@
+import { ViewVariant } from '../components/ui/components/Badge/component';
+
 export const titles = [
   'Компания',
   'Формат',
@@ -25,3 +27,14 @@ export const matchHash: Record<string, string> = {
   Навыки: 'hard_skill',
   Дополнительно: 'description',
 };
+
+export const columnTitle: ViewVariant[] = [
+  'Кандидаты',
+  'Тестовое',
+  'Собеседование',
+  'Офер',
+  'Отказ',
+  'Резерв',
+];
+
+export const navVacancyLabes: string[] = ['Новые кандидаты', 'Моя доска'];

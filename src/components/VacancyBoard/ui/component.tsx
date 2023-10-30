@@ -1,18 +1,7 @@
-const columnTitle: ViewVariant[] = [
-  'Кандидаты',
-  'Тестовое',
-  'Собеседование',
-  'Офер',
-  'Отказ',
-  'Резерв',
-];
-
-import React from 'react';
-
 import styles from './Board.module.css';
 
+import { columnTitle } from '../../../helpers/static';
 import { ColumnBoardContainer } from '../../ColumnBoard/container';
-import { ViewVariant } from '../../ui/components/Badge/component';
 
 export function VacancyBoard() {
   const isHidden = true;

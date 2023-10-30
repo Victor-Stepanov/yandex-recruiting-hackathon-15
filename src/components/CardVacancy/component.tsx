@@ -2,6 +2,8 @@ import { CardMedia, Typography, IconButton } from '@mui/material';
 
 import styles from './card.module.css';
 
+import img from './logoMock.png';
+
 import { formatDate } from '../../helpers/utils';
 import { Vacancy } from '../../interfaces/vacancy.interface';
 import { CustomCard } from '../ui/components/CustomCard/component';
@@ -21,11 +23,7 @@ export function CardVacancy({
             alt='Логотип'
             height='40'
             width='40'
-            image={`${
-              vacancies.image === null || undefined
-                ? 'https://www.creativefabrica.com/wp-content/uploads/2021/11/27/IT-logo-design-vector-Graphics-20820351-1-580x386.jpg'
-                : vacancies.image
-            }`}
+            image={`${!vacancies.image ? img : vacancies.image}`}
             className={styles.img}
           />
           <div>
@@ -47,10 +45,8 @@ export function CardVacancy({
       </div>
       <div className={styles.Tegs}>
         {vacancies.work_format.map((format, index) => (
-          <div className={styles.Teg}>
-            <Typography key={index} className={styles.TegText}>
-              {format.name}
-            </Typography>
+          <div key={index} className={styles.Teg}>
+            <Typography className={styles.TegText}>{format.name}</Typography>
           </div>
         ))}
       </div>

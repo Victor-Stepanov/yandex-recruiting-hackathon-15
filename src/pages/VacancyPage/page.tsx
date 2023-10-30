@@ -12,9 +12,12 @@ const labels: string[] = ['Новые кандидаты', 'Моя доска'];
 export function VacancyPage() {
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const handleChange = React.useCallback(
+    (_event: React.SyntheticEvent, newValue: number) => {
+      setValue(newValue);
+    },
+    []
+  );
 
   return (
     <section className={styles.section}>
@@ -25,21 +28,23 @@ export function VacancyPage() {
           value={value}
           onChange={handleChange}
         />
-        <Button
-          sx={{
-            fontSize: '14px',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: '20px',
-            color: '#1D6BF3',
-            padding: '0px',
-            textTransform: 'none',
-          }}
-        >
-          Выбрать
-        </Button>
+        {labels[value] === 'Моя доска' && (
+          <Button
+            sx={{
+              fontSize: '14px',
+              fontStyle: 'normal',
+              fontWeight: 500,
+              lineHeight: '20px',
+              color: '#1D6BF3',
+              padding: '0px',
+              textTransform: 'none',
+            }}
+          >
+            Выбрать
+          </Button>
+        )}
       </nav>
-      {labels[value] === 'Моя доска' ? <VacancyBoardContainer /> : <div></div>}
+      {labels[value] === 'Моя доска' ? <VacancyBoardContainer /> : <></>}
     </section>
   );
 }

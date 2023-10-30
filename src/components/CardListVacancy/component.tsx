@@ -38,18 +38,12 @@ export function CardListVacancy({
   value: number;
   vacancies: Vacancy[];
 }): JSX.Element {
-  // const [activeTab, setActiveTab] = React.useState(0);
-
-  // Функция для фильтрации вакансий в зависимости от выбранной вкладки
   const filterVacancies = (vacancies: Vacancy[]) => {
     if (value === 1) {
-      // Показать только активные вакансии
       return vacancies.filter((vacancy) => vacancy.is_active);
     } else if (value === 2) {
-      // Показать только неактивные вакансии
       return vacancies.filter((vacancy) => !vacancy.is_active);
     } else {
-      // Показать все вакансии
       return vacancies;
     }
   };
@@ -61,8 +55,12 @@ export function CardListVacancy({
 
         <div className={styles.Cardlist}>
           {filterVacancies(vacancies).map((vacancies) => (
-            <Link className={styles.link} to={`vacancy/${vacancies.id}`}>
-              <CardVacancy key={vacancies.id} vacancies={vacancies} />
+            <Link
+              key={vacancies.id}
+              className={styles.link}
+              to={`vacancy/${vacancies.id}`}
+            >
+              <CardVacancy vacancies={vacancies} />
             </Link>
           ))}
         </div>

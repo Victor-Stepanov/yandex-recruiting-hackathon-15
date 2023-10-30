@@ -12,7 +12,7 @@ export function CardListVacancyContainer(props: { value: number }) {
 
   React.useEffect(() => {
     dispatch(fetchVacancies());
-  }, []);
+  }, [dispatch]);
 
   if (!vacancies.length) {
     return;
