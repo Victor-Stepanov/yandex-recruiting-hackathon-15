@@ -1,0 +1,17 @@
+.tag {
+	box-sizing: border-box;
+	display: inline-flex;
+	justify-content: start;
+	align-items: center;
+	flex-wrap: nowrap;
+	width: auto;
+	margin: 0;
+	padding: 4px 12px;
+	background-color: #F1F6FF;
+	border-radius: 16px;
+}
+
+.tag__text {
+	font-size: 13px;
+	color: #797980;
+}

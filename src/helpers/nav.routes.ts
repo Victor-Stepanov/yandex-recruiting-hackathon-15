@@ -14,7 +14,7 @@ export const navRoutes = [
     },
   },
   {
-    path: 'resumelist',
+    path: 'candidates',
     icon: {
       active: ResumeIconActive,
       unactive: ResumeIcon,

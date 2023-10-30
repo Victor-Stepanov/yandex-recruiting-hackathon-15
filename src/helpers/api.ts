@@ -1,3 +1,5 @@
+export type TPage = number | 'next' | 'prev';
+
 class Api {
   #token =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMTk1OTQwLCJpYXQiOjE2OTg2MDM5NDAsImp0aSI6IjAzNTZhYjZhNGQ4ZDQzODE5MTIxN2Q0MTc2NTZlM2RiIiwidXNlcl9pZCI6MX0.27VDMALGqCZf6FnCsW6QuUSmnE2zKrxK_UJG5xXecLI';
@@ -12,6 +14,17 @@ class Api {
         Authorization: `Bearer ${this.#token}`,
       },
     });
+    return response;
+  }
+
+  async getCandidates() {
+    const response = await fetch(`${this.url}/students/`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.#token}`,
+      },
+    });
+
     return response;
   }
 }

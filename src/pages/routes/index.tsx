@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '../../layout';
+import { CandidatesPage } from '../Candidates';
 import { HomePage } from '../Home';
 
 const routes: RouteObject[] = [
@@ -13,8 +14,8 @@ const routes: RouteObject[] = [
         element: <HomePage />,
       },
       {
-        path: 'resumelist',
-        element: <span>ResumeListPage</span>,
+        path: 'candidates',
+        element: <CandidatesPage />,
       },
     ],
   },

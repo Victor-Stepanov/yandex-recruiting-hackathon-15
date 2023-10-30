@@ -5,11 +5,13 @@ import {
   useSelector,
 } from 'react-redux/es/exports';
 
+import { candidatesReducer } from './candidates//slice';
 import { vacanciesReducer } from './vacancies/slice';
 
 export const store = configureStore({
   reducer: {
     vacancies: vacanciesReducer,
+    candidates: candidatesReducer,
   },
 });
 
