@@ -6,7 +6,7 @@ import { ConnectDropTarget } from 'react-dnd';
 
 import styles from './ColumnBoard.module.css';
 
-import { CandidateProps } from '../../../interfaces/vacancy.interface';
+import { CandidateProps } from '../../../interfaces/board.interface';
 import { CandidateContainer } from '../../Candidate';
 import { CustomBadge } from '../../ui';
 import { ViewVariant } from '../../ui/components/Badge/component';

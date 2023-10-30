@@ -1,3 +1,3 @@
 import { RootState } from '../../store';
 
-export const selectBoardModule = (state: RootState) => state.board;
+export const selectBoardModule = (state: RootState) => state.board.board;

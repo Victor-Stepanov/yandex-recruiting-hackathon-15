@@ -2,7 +2,7 @@ import { useDrag } from 'react-dnd';
 
 import { Candidate } from './ui/component';
 
-import { CandidateProps } from '../../interfaces/vacancy.interface';
+import { CandidateProps } from '../../interfaces/board.interface';
 
 export function CandidateContainer({
   columnPosition,
@@ -11,13 +11,21 @@ export function CandidateContainer({
   columnPosition: number;
   candidate: CandidateProps;
 }) {
-  const [, dragRef] = useDrag({ type: 'candidate', item: candidate });
+  const [{ isDrag }, dragRef] = useDrag({
+    type: 'candidate',
+    item: candidate,
+    collect: (monitor) => ({
+      isDrag: monitor.isDragging(),
+    }),
+  });
 
   return (
-    <Candidate
-      columnPosition={columnPosition}
-      dragRef={dragRef}
-      candidate={candidate}
-    />
+    !isDrag && (
+      <Candidate
+        columnPosition={columnPosition}
+        dragRef={dragRef}
+        candidate={candidate}
+      />
+    )
   );
 }

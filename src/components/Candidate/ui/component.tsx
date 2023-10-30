@@ -5,7 +5,10 @@ import styles from './candidate.module.css';
 
 import { CardProvider } from './card.provider';
 
-import { CandidateProps } from '../../../interfaces/vacancy.interface';
+import imgMock from './user-photo.png';
+
+import { formatDate } from '../../../helpers/utils';
+import { CandidateProps } from '../../../interfaces/board.interface';
 
 export function Candidate({
   dragRef,
@@ -17,6 +20,7 @@ export function Candidate({
   columnPosition: number;
 }) {
   const isActive = columnPosition === +candidate.kanban_position;
+
   return (
     <div ref={!isActive ? dragRef : null} className={styles.container}>
       <CardProvider isActive={isActive}>
@@ -25,19 +29,21 @@ export function Candidate({
           avatar={
             <Avatar
               aria-label='level'
-              alt={`${candidate.name} ${candidate.surname}`}
-              src={candidate.imageSrc}
+              alt={`${candidate.student.first_name} ${candidate.student.last_name}`}
+              src={
+                !candidate.student.image
+                  ? imgMock
+                  : String(candidate.student.image)
+              }
             />
           }
           title={
             <p
               className={styles.title}
-            >{`${candidate.name} ${candidate.surname}`}</p>
-          }
-          subheader={
-            <p className={styles.subtitle}>{`${candidate.grade} ${'1 год'}`}</p>
+            >{`${candidate.student.first_name} ${candidate.student.last_name}`}</p>
           }
         />
+        <p className={styles.subtitle}>{formatDate(candidate.created_at)}</p>
       </CardProvider>
     </div>
   );

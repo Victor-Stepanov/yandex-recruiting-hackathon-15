@@ -49,13 +49,3 @@ export interface Vacancy {
 
 export interface VacancyCardBodyProps
   extends Omit<Vacancy, 'title' | 'image'> {}
-
-export interface CandidateProps {
-  id: string;
-  imageSrc: string;
-  name: string;
-  surname: string;
-  grade: string;
-  kanban_position: string;
-  updated_at: Date;
-}

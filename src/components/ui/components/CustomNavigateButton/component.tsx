@@ -25,7 +25,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: '0',
-          width: 144,
+
           fontfamily: 'YS Display',
           fontSize: 24,
           fontStyle: 'normal',

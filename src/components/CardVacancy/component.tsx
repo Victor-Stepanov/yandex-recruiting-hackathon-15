@@ -2,6 +2,7 @@ import { CardMedia, Typography, IconButton } from '@mui/material';
 
 import styles from './card.module.css';
 
+import { formatDate } from '../../helpers/utils';
 import { Vacancy } from '../../interfaces/vacancy.interface';
 import { CustomCard } from '../ui/components/CustomCard/component';
 import { PanIcon } from '../ui/icons';
@@ -11,17 +12,6 @@ export function CardVacancy({
 }: {
   vacancies: Vacancy;
 }): JSX.Element {
-  console.log(vacancies);
-
-  const formatDate = (inputDate: string | number | Date) => {
-    const date = new Date(inputDate);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-
-    return `${day}.${month}.${year}`;
-  };
-
   return (
     <CustomCard>
       <div className={styles.Header}>

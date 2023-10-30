@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './VacancyPage.module.css';
 
 import { CustomNavigateButton } from '../../components/ui';
+import { VacancyBoardContainer } from '../../components/VacancyBoard';
 import { VacancyCardContainer } from '../../components/VacancyCard';
 
 const labels: string[] = ['Новые кандидаты', 'Моя доска'];
@@ -38,6 +39,7 @@ export function VacancyPage() {
           Выбрать
         </Button>
       </nav>
+      {labels[value] === 'Моя доска' ? <VacancyBoardContainer /> : <div></div>}
     </section>
   );
 }

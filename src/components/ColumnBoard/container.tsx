@@ -2,10 +2,11 @@ import { useDrop } from 'react-dnd';
 
 import { ColumnBoard } from './ui/component';
 
+import { CandidateProps } from '../../interfaces/board.interface';
 import { ColumnBoardProps } from '../../interfaces/column.interface';
-import { CandidateProps } from '../../interfaces/vacancy.interface';
 import { selectBoardModule } from '../../redux-store/features/board/selector';
-import { moveCandidate } from '../../redux-store/features/board/slice';
+
+import { patchCandidateInfo } from '../../redux-store/features/board/thunk/patchCandidateInfo';
 import { useAppSelector, useAppDispatch } from '../../redux-store/store';
 
 export function ColumnBoardContainer({
@@ -13,29 +14,26 @@ export function ColumnBoardContainer({
   columnPosition,
   isHidden,
 }: ColumnBoardProps) {
-  const { candidates } = useAppSelector(selectBoardModule);
+  const board = useAppSelector(selectBoardModule);
   const dispatch = useAppDispatch();
-  const [{ isHover }, dropTarget] = useDrop({
+  const [, dropTarget] = useDrop({
     accept: 'candidate',
     drop: (item: CandidateProps) => {
       handleMoveItem(item);
     },
-    collect: (monitor) => ({
-      isHover: monitor.isOver(),
-    }),
   });
-  console.log(isHover);
+
   const handleMoveItem = (item: CandidateProps) => {
     dispatch(
-      moveCandidate({
-        id: item.id,
-        position: columnPosition.toString(),
-        date: new Date(),
+      patchCandidateInfo({
+        vacancyId: board[0].id,
+        candidateId: item.id,
+        position: columnPosition + 1,
       })
     );
   };
 
-  const filteredCandidates = candidates.filter(
+  const filteredCandidates = board[0].candidates.filter(
     ({ kanban_position }) => +kanban_position === columnPosition
   );
 
