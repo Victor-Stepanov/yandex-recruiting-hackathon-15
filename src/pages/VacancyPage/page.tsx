@@ -3,10 +3,10 @@ import React from 'react';
 
 import styles from './VacancyPage.module.css';
 
+import { CandidateList } from '../../components/CandidateList';
 import { CustomNavigateButton } from '../../components/ui';
 import { VacancyBoardContainer } from '../../components/VacancyBoard';
 import { VacancyCardContainer } from '../../components/VacancyCard';
-import { CandidateList } from '../../components/CandidateList';
 
 const labels: string[] = ['Новые кандидаты', 'Моя доска'];
 
