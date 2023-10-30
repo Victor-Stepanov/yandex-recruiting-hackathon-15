@@ -6,6 +6,7 @@ import { CandidateProps } from '../../interfaces/board.interface';
 import { ColumnBoardProps } from '../../interfaces/column.interface';
 import { selectBoardModule } from '../../redux-store/features/board/selector';
 
+import { moveCandidate } from '../../redux-store/features/board/slice';
 import { patchCandidateInfo } from '../../redux-store/features/board/thunk/patchCandidateInfo';
 import { useAppSelector, useAppDispatch } from '../../redux-store/store';
 
@@ -24,6 +25,12 @@ export function ColumnBoardContainer({
   });
 
   const handleMoveItem = (item: CandidateProps) => {
+    dispatch(
+      moveCandidate({
+        id: item.id,
+        position: columnPosition,
+      })
+    );
     dispatch(
       patchCandidateInfo({
         vacancyId: board[0].id,

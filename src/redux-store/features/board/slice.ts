@@ -4,7 +4,7 @@ import { fetchCandidatesForBoard } from './thunk/fetchCandidatesForBoard';
 
 import { patchCandidateInfo } from './thunk/patchCandidateInfo';
 
-import { Board, CandidateProps } from '../../../interfaces/board.interface';
+import { Board } from '../../../interfaces/board.interface';
 import { Status } from '../../../interfaces/status';
 
 interface InitialState {
@@ -20,7 +20,20 @@ const initialState: InitialState = {
 const boardSlice = createSlice({
   name: 'board',
   initialState,
-  reducers: {},
+  reducers: {
+    moveCandidate: (
+      state,
+      action: PayloadAction<{ id: number; position: number }>
+    ) => {
+      const { id, position } = action.payload;
+      const candidate = state.board[0].candidates.find(
+        (item) => item.id === id
+      );
+      if (candidate) {
+        candidate.kanban_position = position;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCandidatesForBoard.pending, (state) => {
@@ -36,28 +49,13 @@ const boardSlice = createSlice({
       .addCase(patchCandidateInfo.pending, (state) => {
         state.status = Status.Pending;
       })
-      .addCase(
-        patchCandidateInfo.fulfilled,
-        (state, action: PayloadAction<CandidateProps>) => {
-          state.status = Status.Success;
-          const { id, kanban_position } = action.payload;
-          const updatedBoard = state.board.map((items) => {
-            const updatedCandidates = items.candidates.map((candidate) => {
-              if (candidate.id === id) {
-                return { ...candidate, kanban_position: kanban_position };
-              } else {
-                return candidate;
-              }
-            });
-            return { ...items, candidates: updatedCandidates };
-          });
-          state.board = updatedBoard;
-        }
-      )
+      .addCase(patchCandidateInfo.fulfilled, (state) => {
+        state.status = Status.Success;
+      })
       .addCase(patchCandidateInfo.rejected, (state) => {
         state.status = Status.Failed;
       });
   },
 });
-
+export const { moveCandidate } = boardSlice.actions;
 export const boardReducer = boardSlice.reducer;
