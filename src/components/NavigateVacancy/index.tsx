@@ -1,1 +1,1 @@
-export { CustomNavigateButton } from './component';
+export { NavigateVacancy } from './component';

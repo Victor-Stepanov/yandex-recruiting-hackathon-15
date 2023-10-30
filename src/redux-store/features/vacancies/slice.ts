@@ -1,21 +1,23 @@
-import {
-  PayloadAction,
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { fetchVacancies } from './thunk/fetchVacancies';
 
 import { Status } from '../../../interfaces/status';
 import { Vacancy } from '../../../interfaces/vacancy.interface';
 
-const vacanciesEntityAdapter = createEntityAdapter<Vacancy>();
+interface InitialState {
+  status: Status;
+  vacancies: Vacancy[];
+}
+
+const initialState: InitialState = {
+  status: Status.Idle,
+  vacancies: [],
+};
 
 const vacanciesSlice = createSlice({
   name: 'vacancyList',
-  initialState: vacanciesEntityAdapter.getInitialState({
-    status: Status.Idle,
-  }),
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -26,7 +28,7 @@ const vacanciesSlice = createSlice({
         fetchVacancies.fulfilled,
         (state, action: PayloadAction<Vacancy[]>) => {
           state.status = Status.Success;
-          vacanciesEntityAdapter.setAll(state, action.payload);
+          state.vacancies = action.payload;
         }
       )
       .addCase(fetchVacancies.rejected, (state) => {
@@ -36,4 +38,3 @@ const vacanciesSlice = createSlice({
 });
 
 export const vacanciesReducer = vacanciesSlice.reducer;
-export const { selectAll, selectById } = vacanciesEntityAdapter.getSelectors();
