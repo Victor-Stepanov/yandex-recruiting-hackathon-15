@@ -43,24 +43,16 @@ const theme = createTheme({
 });
 
 interface CustomNavigateButtonProps {
+  value: number;
+  onChange: (_event: React.SyntheticEvent, newValue: number) => void;
   labels: string[];
 }
 
 export function CustomNavigateButton(props: CustomNavigateButtonProps) {
-  const { labels } = props;
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
+  const { value, onChange, labels } = props;
   return (
     <ThemeProvider theme={theme}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        aria-label='basic tabs example'
-      >
+      <Tabs value={value} onChange={onChange} aria-label='basic tabs example'>
         {labels.map((label, index) => (
           <Tab key={index} label={label} />
         ))}

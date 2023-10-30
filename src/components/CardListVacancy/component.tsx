@@ -2,6 +2,7 @@ import { Button, ThemeProvider, createTheme } from '@mui/material';
 
 import styles from './card.module.css';
 
+import { Vacancy } from '../../interfaces/vacancy.interface';
 import { CardVacancy } from '../CardVacancy';
 
 const theme = createTheme({
@@ -28,25 +29,37 @@ const theme = createTheme({
   },
 });
 
-export function CardListVacancy(): JSX.Element {
+export function CardListVacancy({
+  value,
+  vacancies,
+}: {
+  value: number;
+  vacancies: Vacancy[];
+}): JSX.Element {
+  // const [activeTab, setActiveTab] = React.useState(0);
+
+  // Функция для фильтрации вакансий в зависимости от выбранной вкладки
+  const filterVacancies = (vacancies: Vacancy[]) => {
+    if (value === 1) {
+      // Показать только активные вакансии
+      return vacancies.filter((vacancy) => vacancy.is_active);
+    } else if (value === 2) {
+      // Показать только неактивные вакансии
+      return vacancies.filter((vacancy) => !vacancy.is_active);
+    } else {
+      // Показать все вакансии
+      return vacancies;
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div className={styles.Container}>
         <Button variant='contained'>Добавить</Button>
         <div className={styles.Cardlist}>
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
+          {filterVacancies(vacancies).map((vacancies) => (
+            <CardVacancy key={vacancies.id} vacancies={vacancies} />
+          ))}
         </div>
       </div>
     </ThemeProvider>
