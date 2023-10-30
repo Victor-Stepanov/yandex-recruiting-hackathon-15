@@ -5,7 +5,6 @@ import { ArrowIcon } from '../../../ui/icons';
 import styles from '../Ui.module.css';
 
 interface VacancyCardHeaderProps {
-  company: string;
   image: string;
   title: string;
   expanded: boolean;
@@ -13,7 +12,6 @@ interface VacancyCardHeaderProps {
 }
 
 export function VacancyCardHeader({
-  company,
   image,
   title,
   handleExpandClick,
@@ -26,7 +24,7 @@ export function VacancyCardHeader({
         margin: 0,
         maxWidth: '400px',
       }}
-      avatar={<Avatar alt={company} src={image} />}
+      avatar={<Avatar src={image} />}
       title={
         <Typography
           variant='h2'

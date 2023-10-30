@@ -4,9 +4,9 @@ import React from 'react';
 
 import { VacancyCardBody, VacancyCardHeader } from './ui';
 
-import { VacancyProps } from '../../interfaces/vacancy.interface';
+import { Vacancy } from '../../interfaces/vacancy.interface';
 
-export function VacancyCard({ vacancy }: { vacancy: VacancyProps }) {
+export function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -27,7 +27,6 @@ export function VacancyCard({ vacancy }: { vacancy: VacancyProps }) {
     >
       <VacancyCardHeader
         title={vacancy.title}
-        company={vacancy.company}
         image={vacancy.image}
         expanded={expanded}
         handleExpandClick={handleExpandClick}

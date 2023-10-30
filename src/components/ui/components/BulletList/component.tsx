@@ -2,7 +2,7 @@ import { List, ListItem } from '@mui/material';
 
 interface BulletListProps {
   items: string[];
-  withLabel: boolean;
+  withLabel?: boolean;
 }
 
 export function BulletList({ items }: BulletListProps) {

@@ -36,4 +36,4 @@ const vacanciesSlice = createSlice({
 });
 
 export const vacanciesReducer = vacanciesSlice.reducer;
-export const { selectAll } = vacanciesEntityAdapter.getSelectors();
+export const { selectAll, selectById } = vacanciesEntityAdapter.getSelectors();

@@ -1,6 +1,6 @@
 import styles from './card.module.css';
 
-import { CardListVacancy } from '../../components/CardListVacancy/component';
+import { CardListVacancyContainer } from '../../components/CardListVacancy';
 import { NavigateVacancy } from '../../components/NavigateVacancy/component';
 
 export function MainPageVacancy(): JSX.Element {
@@ -9,7 +9,7 @@ export function MainPageVacancy(): JSX.Element {
     <section>
       <h2 className={styles.Title}>Вакансии</h2>
       <NavigateVacancy labels={labels} />
-      <CardListVacancy />
+      <CardListVacancyContainer />
     </section>
   );
 }

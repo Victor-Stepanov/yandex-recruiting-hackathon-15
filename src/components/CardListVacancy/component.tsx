@@ -2,8 +2,6 @@ import { Button, ThemeProvider, createTheme } from '@mui/material';
 
 import styles from './card.module.css';
 
-import { CardVacancy } from '../CardVacancy';
-
 const theme = createTheme({
   components: {
     MuiButton: {
@@ -33,21 +31,7 @@ export function CardListVacancy(): JSX.Element {
     <ThemeProvider theme={theme}>
       <div className={styles.Container}>
         <Button variant='contained'>Добавить</Button>
-        <div className={styles.Cardlist}>
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-          <CardVacancy />
-        </div>
+        <div className={styles.Cardlist}></div>
       </div>
     </ThemeProvider>
   );
