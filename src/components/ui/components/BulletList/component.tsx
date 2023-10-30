@@ -1,4 +1,4 @@
-import { List, ListItem } from '@mui/material';
+import styles from './BulletList.module.css';
 
 interface BulletListProps {
   items: string[];
@@ -7,28 +7,12 @@ interface BulletListProps {
 
 export function BulletList({ items }: BulletListProps) {
   return (
-    <List
-      sx={{
-        padding: '0px',
-      }}
-    >
+    <ul className={styles.list}>
       {items.map((item, index) => (
-        <ListItem
-          key={index}
-          sx={{
-            fontSize: '16px',
-            fontStyle: 'normal',
-            lineHeight: '20px',
-            padding: '0px',
-            '&:before': {
-              content: "'\\2022'",
-              marginRight: '0.5em',
-            },
-          }}
-        >
+        <li className={styles.item} key={index}>
           {item}
-        </ListItem>
+        </li>
       ))}
-    </List>
+    </ul>
   );
 }

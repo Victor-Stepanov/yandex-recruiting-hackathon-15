@@ -47,6 +47,9 @@ export interface Vacancy {
   author: number;
 }
 
+export interface VacancyCardBodyProps
+  extends Omit<Vacancy, 'title' | 'image'> {}
+
 export interface CandidateProps {
   id: string;
   imageSrc: string;

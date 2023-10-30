@@ -32,7 +32,7 @@ export function VacancyCardHeader({
           children={title}
           sx={{
             fontSize: '24px',
-            lineHeight: ' 32px',
+            lineHeight: '32px',
             whiteSpace: 'nowrap',
           }}
         />

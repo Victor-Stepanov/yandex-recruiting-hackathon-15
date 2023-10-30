@@ -1,6 +1,6 @@
 import { Button, ThemeProvider, createTheme } from '@mui/material';
 
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './card.module.css';
 
@@ -61,9 +61,9 @@ export function CardListVacancy({
 
         <div className={styles.Cardlist}>
           {filterVacancies(vacancies).map((vacancies) => (
-            <NavLink className={styles.link} to={''}>
+            <Link className={styles.link} to={`vacancy/${vacancies.id}`}>
               <CardVacancy key={vacancies.id} vacancies={vacancies} />
-            </NavLink>
+            </Link>
           ))}
         </div>
       </div>

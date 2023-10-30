@@ -1,9 +1,9 @@
+import { Suspense } from 'react';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
-import { VacancyBoardContainer } from '../../components/VacancyBoard';
 import { Layout } from '../../layout';
 import { MainPageVacancy } from '../MainPageVacancy';
-import { VacancyPage } from '../VacancyPage/page';
+import { VacancyPage } from '../VacancyPage';
 
 const routes: RouteObject[] = [
   {
@@ -12,15 +12,19 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <MainPageVacancy />,
+        element: (
+          <Suspense fallback={<>Загрузка...</>}>
+            <MainPageVacancy />
+          </Suspense>
+        ),
+      },
+      {
+        path: '/vacancy/:id',
+        element: <VacancyPage />,
       },
       {
         path: 'resumelist',
         element: <VacancyPage />,
-      },
-      {
-        path: '/board',
-        element: <VacancyBoardContainer />,
       },
     ],
   },

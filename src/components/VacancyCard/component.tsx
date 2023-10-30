@@ -8,7 +8,6 @@ import { Vacancy } from '../../interfaces/vacancy.interface';
 
 export function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -32,7 +31,7 @@ export function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
         handleExpandClick={handleExpandClick}
       />
       <Collapse in={expanded} timeout='auto' unmountOnExit>
-        <VacancyCardBody />
+        <VacancyCardBody vacancy={vacancy} />
       </Collapse>
     </Card>
   );
