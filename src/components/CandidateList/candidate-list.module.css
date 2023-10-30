@@ -1,11 +1,14 @@
 .person {
+	cursor: pointer;
+
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
 	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+
 	color: #1D6BF3;
 	text-decoration: none;
-	cursor: pointer;
+
 	transition: color 0.4s ease;
 }
 
@@ -26,10 +29,10 @@
 }
 
 .photo-wrapper:has(img[src="null"]) {
-	background-color: #F9FAFB;
-	background: linear-gradient(45deg, #F9FAFB, #DDE0E4);
-	border-radius: 50%;
 	overflow: hidden;
+	background: linear-gradient(45deg, #F9FAFB, #DDE0E4);
+	background-color: #F9FAFB;
+	border-radius: 50%;
 }
 
 .photo-wrapper img[src="null"] {
@@ -38,24 +41,25 @@
 
 .location {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+
 	width: 100%;
 }
 
 .location__current {
+	overflow: hidden;
 	max-width: 76px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	overflow: hidden;
 }
 
 .candidates div[class*="MuiDataGrid-columnHeader"][aria-colindex="2"],
 .candidates div[class*="MuiDataGrid-cell"][aria-colindex="2"] {
 	order: -1;
-	padding-left: 16px;
 	padding-right: 16px;
+	padding-left: 16px;
 }
 
 .candidates div[class*="MuiButtonBase-root"] svg {
@@ -66,38 +70,47 @@
 	box-sizing: border-box;
 	width: 100%;
 	padding: 8px 4px;
+
 	background-color: transparent;
 	border: 1px solid #DDE0E4;
 	border-radius: 4px;
 }
 
 .status .status__text {
+	overflow: hidden;
+
 	max-width: 100%;
+
+	font-size: 11px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	overflow: hidden;
-	font-size: 11px;
 }
 
 .tags {
 	position: relative;
-	display: flex;
-	justify-content: start;
-	align-items: center;
-	flex-wrap: nowrap;
-	width: 100%;
+
 	overflow: hidden;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: start;
+
+	width: 100%;
 }
 
-.tags:after {
-	position: absolute;
-	display: block;
+.tags::after {
 	content: '';
-	width: 64px;
-	height: 100%;
+
+	position: absolute;
 	top: 0;
 	right: 0;
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+	display: block;
+
+	width: 64px;
+	height: 100%;
+
+	background: linear-gradient(90deg, rgb(255 255 255 / 0%), rgb(255 255 255 / 100%));
 }
 
 .tags>*:not(:last-child) {

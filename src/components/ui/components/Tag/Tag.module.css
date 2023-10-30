@@ -1,12 +1,14 @@
 .tag {
-	box-sizing: border-box;
 	display: inline-flex;
-	justify-content: start;
-	align-items: center;
 	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: start;
+
+	box-sizing: border-box;
 	width: auto;
 	margin: 0;
 	padding: 4px 12px;
+
 	background-color: #F1F6FF;
 	border-radius: 16px;
 }

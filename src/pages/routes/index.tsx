@@ -1,8 +1,9 @@
+import { Suspense } from 'react';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
 import { Layout } from '../../layout';
-import { CandidatesPage } from '../Candidates';
-import { HomePage } from '../Home';
+import { MainPageVacancy } from '../MainPageVacancy';
+import { VacancyPage } from '../VacancyPage';
 
 const routes: RouteObject[] = [
   {
@@ -11,11 +12,19 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<>Загрузка...</>}>
+            <MainPageVacancy />
+          </Suspense>
+        ),
       },
       {
-        path: 'candidates',
-        element: <CandidatesPage />,
+        path: '/vacancy/:id',
+        element: <VacancyPage />,
+      },
+      {
+        path: 'resumelist',
+        element: <span></span>,
       },
     ],
   },

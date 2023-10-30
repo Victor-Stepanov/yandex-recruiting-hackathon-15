@@ -46,3 +46,6 @@ export interface Vacancy {
   updated_at: string;
   author: number;
 }
+
+export interface VacancyCardBodyProps
+  extends Omit<Vacancy, 'title' | 'image'> {}
