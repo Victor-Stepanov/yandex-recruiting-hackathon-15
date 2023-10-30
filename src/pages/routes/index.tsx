@@ -1,10 +1,9 @@
+import { Suspense } from 'react';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 
-import { VacancyBoardContainer } from '../../components/VacancyBoard';
 import { Layout } from '../../layout';
 import { MainPageVacancy } from '../MainPageVacancy';
 import { VacancyPage } from '../VacancyPage';
-import { Suspense } from 'react';
 
 const routes: RouteObject[] = [
   {
