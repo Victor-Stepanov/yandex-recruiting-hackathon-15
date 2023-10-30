@@ -1,6 +1,6 @@
-@import url("./normalize.css");
-@import url("../fonts/fonts.css");
-@import url("./variables.css");
+@import url('./normalize.css');
+@import url('../fonts/fonts.css');
+@import url('./variables.css');
 
 html,
 body {
@@ -8,7 +8,6 @@ body {
   height: 100vh;
   text-size-adjust: 100%;
   text-rendering: optimizelegibility;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -5,14 +5,52 @@ class Api {
     this.url = url;
   }
 
-  async getVacancies() {
-    const response = await fetch(`${this.url}/vacancies/`, {
+  getVacancies() {
+    return fetch(`${this.url}/vacancies/`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.#token}`,
       },
     });
-    return response;
+  }
+  getVacancyById(id: string) {
+    return fetch(`${this.url}/vacancies/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.#token}`,
+      },
+    });
+  }
+  getCandidatesForBoard(id: string) {
+    return fetch(`${this.url}/vacancies/${id}/candidates`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.#token}`,
+      },
+    });
+  }
+  patchCandidate({
+    candidateId,
+    vacancyId,
+    position,
+  }: {
+    candidateId: number;
+    vacancyId: number;
+    position: number;
+  }) {
+    return fetch(
+      `${this.url}/vacancies/${vacancyId}/candidates/${candidateId}/`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.#token}`,
+        },
+        body: JSON.stringify({
+          kanban_position: position,
+        }),
+      }
+    );
   }
 }
 
