@@ -25,14 +25,6 @@ type TRow = {
   hard_skills: string[];
 };
 
-enum StatusColor {
-  'Пассивно ищу работу' = '#FFE1BD',
-  'Активно ищу работу' = '#C2E5CE',
-  'Не ищу работу' = '#FFDDE5',
-  'Открыт для предложений' = '#CCC2ED',
-  'Ищу дополнительную работу' = '#FFF9D3',
-}
-
 const columns: GridColDef[] = [
   {
     field: 'id',
@@ -110,17 +102,53 @@ const columns: GridColDef[] = [
     field: 'status',
     renderHeader: () => <Typography variant='body1'>Статус</Typography>,
     width: 140,
-    renderCell: (params: GridRenderCellParams<string[]>) => (
-      <div
-        className={styles.status}
-        style={{ backgroundColor: StatusColor[params.value] }}
-        title={params.value}
-      >
-        <Typography variant='body2' className={styles['status__text']}>
-          {params.value}
-        </Typography>
-      </div>
-    ),
+    renderCell: (params: GridRenderCellParams<string[]>) => {
+      const statuses = [
+        'Пассивно ищу работу',
+        'Активно ищу работу',
+        'Не ищу работу',
+        'Открыт для предложений',
+        'Ищу дополнительную работу',
+      ];
+      const colors = ['#FFE1BD', '#C2E5CE', '#FFDDE5', '#CCC2ED', '#FFF9D3'];
+      let color;
+
+      switch (params.value) {
+        case statuses[0]:
+          color = colors[0];
+          break;
+
+        case statuses[1]:
+          color = colors[1];
+          break;
+
+        case statuses[2]:
+          color = colors[2];
+          break;
+
+        case statuses[3]:
+          color = colors[3];
+          break;
+
+        case statuses[4]:
+          color = colors[4];
+          break;
+      }
+
+      return (
+        <div
+          className={styles.status}
+          style={{
+            backgroundColor: color,
+          }}
+          title={params.value}
+        >
+          <Typography variant='body2' className={styles['status__text']}>
+            {params.value}
+          </Typography>
+        </div>
+      );
+    },
     hideSortIcons: true,
   },
   {
@@ -129,7 +157,7 @@ const columns: GridColDef[] = [
     width: 344,
     renderCell: (params: GridRenderCellParams<string[]>) => (
       <div className={styles.tags}>
-        {params.value.map((item: string, i) => (
+        {params.value.map((item: string, i: number) => (
           <Tag text={item} key={i} />
         ))}
       </div>
@@ -151,7 +179,7 @@ export function CandidateList(): JSX.Element {
         office_format: person.office_format.map((format) => format.name),
         current_location: [
           person.current_location,
-          [...person.location_to_relocate.map((location) => location.name)],
+          ...person.location_to_relocate.map((location) => location.name),
         ],
         work_format: person.work_format.map((format) => format.name),
         work_experience: person.work_experience,
@@ -169,7 +197,7 @@ export function CandidateList(): JSX.Element {
     }
 
     setRows(getRows(candidates));
-  }, [candidates]);
+  }, [candidates, dispatch]);
 
   return (
     <div className={styles.candidates} style={{ width: '100%' }}>
@@ -179,7 +207,6 @@ export function CandidateList(): JSX.Element {
         autoHeight
         disableColumnMenu
         slots={{
-          // toolbar: CustomToolbar,
           loadingOverlay: LinearProgress,
         }}
         loading={rows.length === 0}
